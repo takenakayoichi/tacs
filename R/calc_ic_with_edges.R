@@ -53,7 +53,7 @@ calc_ic_with_edges <-function(network,exp_data,ic_type,is_markov,segment,icwoedg
     }
     #ネットスコア計算
     for(time_point in 1:nrow(subexp)){
-      subnet_score <- score(e,subexp,type=ic_type)
+      subnet_score <- score(e,subexp[-time_point,],type=ic_type)
       #ICに代入する
       ic[time_point,i] <- subnet_score
     }

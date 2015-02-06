@@ -7,25 +7,19 @@
 #'res <- tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment)
 #'summary(res)
 #'@export
-summary.tacs <- function(obj){
-  pos_valid <- as.vector(!is.na(obj$information_gain[1,]))
+summary.tacs <- function(obj,...){
+  cat("Time-course of control strength toward target nodes")
+  if(obj$info$is_markov) {
+    cat("  (on ¥Markov process\n\n")
+  } 
   
-  info <- obj$info
-  
-  gain <- obj$information_gain[,pos_valid]
-  if(length(info$segment)!=1){ #show summary info on each segment
-    gain_mean = aggregate(gain,by=list(seg=info$segment_col),FUN=mean)
-    rownames(gain_mean) <- gain_mean$seg
-    gain_mean$seg <- NULL
-    gain_mean_sum = apply(gain_mean,2,sum)
-    gain_order <- order(gain_mean_sum,decreasing=TRUE)
-    gain_mean[gain_order]
+  if(length(obj$info$segment) != 1) { 
+    cat("\n[segment summary]\n\n")    
+    df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
+    print(df)
+    cat("\n[node summary]\n\n")
   }
   
-  
-  by(obj$information_gain[,pos_valid],seg_name,summary)
-  by(obj$information_gain[,pos_int],seg_name,summary)
-  by(obj$information_gain[,c(1)],seg_name,mean)
-  
+  summary(obj$score,...)  
 
 }

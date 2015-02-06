@@ -6,7 +6,7 @@
 #'
 #'@param segment This paramer assigns the segments of exp_data. 
 #' It is used when exp_data is composed of plural time-course experiment and the edges are drown under markov property
-#
+#'
 #'@return Boolean
 consistency_check <- function(exp_data,ic_type,segment){
   x = empty.graph(colnames(exp_data))
@@ -21,6 +21,8 @@ consistency_check <- function(exp_data,ic_type,segment){
     warning(message="Illegal segment. sum of segment is not equal to #samples in exp_data.")    
     return(FALSE)
   } 
+
+  
   
   return(TRUE)
 }

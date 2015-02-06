@@ -7,16 +7,21 @@
 #'res <- tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment)
 #'print(res)
 #'@export
-print.tacs <- function(obj){
-  if(obj$input$is_markov) {
-    print("Network on simple Markov process")
-  } else {
-    print("Network")
+print.tacs <- function(obj,...){
+
+  cat("Time-course of control strength toward target nodes")
+  if(obj$info$is_markov) {
+    cat("  (on Markov process\n\n")
+  } 
+  cat("\n[network]\n\n")    
+  print(obj$info$network)
+  
+  if(length(obj$info$segment) != 1) { 
+    cat("\n[segment summary]\n\n")    
+    df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
+    print(df)
   }
-  print(obj$input$network)
+  cat("\n[time-course of control strength toward nodes] \n\n")
   
-  print("Information Gain")
-  print(obj$information_gain)
-  
-#  summary(c(1,2,3,4,5))  
+  print(obj$score,...)
 }

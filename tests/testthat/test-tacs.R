@@ -76,8 +76,35 @@ test_that("IC without edge",{
 test_that("IC withedge",{
   data(dream4)
   #IC of node without in edge is NA
+  context("without segment")
+  
   icwo <- calc_ic_without_edge(dream4$exp,"aic-g",FALSE,105) 
   icw  <- calc_ic_with_edges(dream4$net,dream4$exp,"aic-g",FALSE,105,icwo) 
+  b <- expect_equal(icw$fis[1],NA)
+  b <- expect_equal(icw$rutR[1],NA)
+  b <- expect_equal(icw$soxR[1],NA)
+  b <- expect_equal(floor(icw$gadX[1]*100),15559)
+  b <- expect_equal(round(icw$gadX[105]*100),15555)
+  b <- expect_equal(floor(icw$mtlR[1]*100),9213)
+  b <- expect_equal(round(icw$mtlR[30]*100),9254)
   
+  context("with segment")
+  icwo <- calc_ic_without_edge(dream4$exp,"aic-g",TRUE,dream4$segment) 
+  icw  <- calc_ic_with_edges(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,icwo) 
+  b <- expect_equal(round(icw[1,10]*100),6415)
+  b <- expect_equal(icw[1,1],NA)
+  b <- expect_equal(icw$fis[1],NA)
+  b <- expect_equal(icw$rutR[1],NA)
+  b <- expect_equal(icw$soxR[1],NA)
+  b <- expect_equal(floor(icw$gadX[1]*100),14894)
+  b <- expect_equal(round(icw$gadX[100]*100),14737)
+  b <- expect_equal(floor(icw$mtlR[1]*100),8761)
+  b <- expect_equal(round(icw$mtlR[30]*100),8513)
   
+})
+
+test_that("class name",{
+  data(dream4)
+  res <- tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,NA)
+  b <- expect_equal(class(res),"tacs")
 })
