@@ -6,16 +6,22 @@
 \alias{tacs-package}
 \title{Calculate Control Strength toward every nodes on directed graph based on information criterion}
 \usage{
-tacs(network, tc_data, ic_type = "aic", is_markov = FALSE)
+tacs(network, exp_data, ic_type = "aic-g", is_markov = FALSE,
+  segment = NA, segment_name = NA)
 }
 \arguments{
 \item{network}{directed graph: format used in library bnlearn is used.}
 
-\item{tc_data}{time course data on nodes in the network: data frame}
+\item{exp_data}{experimental data on nodes in the network: data frame}
 
 \item{ic_type}{information criterion type: string "aic"(=default) or "bayes"}
 
 \item{is_markov}{edges are drown under markov property :boolean TRUE or FALSE(=default)}
+
+\item{segment}{This paramer assigns the segments of exp_data.
+It is used when exp_data is composed of plural time-course experiment and the edges are drown under markov property}
+
+\item{segment_name}{name list of segments. default (seg1,seg2,...)}
 }
 \value{
 strength Control strength toward each node for every time point: data frame
@@ -24,5 +30,9 @@ strength Control strength toward each node for every time point: data frame
 Calculate Control Strength toward every nodes on directed graph based on information criterion
 
 Calculate Control Strength toward every nodes on directed graph based on information criterion
+}
+\examples{
+data(dream4)
+tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,NA)
 }
 

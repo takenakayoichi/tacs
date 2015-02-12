@@ -8,20 +8,33 @@
 #'print(res)
 #'@export
 print.tacs <- function(obj,...){
-
   cat("Time-course of control strength toward target nodes")
   if(obj$info$is_markov) {
-    cat("  (on Markov process\n\n")
+    cat("(on Markov process)\n\n")
   } 
-  cat("\n[network]\n\n")    
-  print(obj$info$network)
   
   if(length(obj$info$segment) != 1) { 
     cat("\n[segment summary]\n\n")    
     df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
     print(df)
   }
-  cat("\n[time-course of control strength toward nodes] \n\n")
   
-  print(obj$score,...)
+  cat("\n[node summary]\n")
+  tmp <- summary(obj$score,...)  
+  print(tmp)
+#  cat("Time-course of control strength toward target nodes")
+#  if(obj$info$is_markov) {
+#    cat("(on Markov process\n\n")
+#  } 
+#  cat("\n[network]\n\n")    
+#  print(obj$info$network)
+  
+#  if(length(obj$info$segment) != 1) { 
+#    cat("\n[segment summary]\n\n")    
+#    df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
+#    print(df)
+#  }
+#  cat("\n[time-course of control strength toward nodes] \n\n")
+  
+#  print(obj$score,...)
 }

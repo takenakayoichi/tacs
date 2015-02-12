@@ -3,6 +3,8 @@
 #'@name tacs
 #'@docType package
 #'@import bnlearn
+#'@import ggplot2
+#'@import grid
 NULL
 #'Calculate Control Strength toward every nodes on directed graph based on information criterion
 #'

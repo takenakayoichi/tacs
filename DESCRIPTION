@@ -9,4 +9,4 @@ Description: Time Course Analysis of Control strength toward nodes/gene expressi
 License: MIT
 Suggest: 
   testthat
-Imports: bnlearn,testthat
+Imports: bnlearn,testthat,ggplot2,grid
