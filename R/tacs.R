@@ -5,6 +5,8 @@
 #'@import bnlearn
 #'@import ggplot2
 #'@import grid
+#'@import qgraph
+#'@import animation
 NULL
 #'Calculate Control Strength toward every nodes on directed graph based on information criterion
 #'
