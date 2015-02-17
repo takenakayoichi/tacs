@@ -9,7 +9,7 @@
 #'@examples
 #'data(dream4)
 #'res <- tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment)
-#'animation(res,dream4$exp)
+#'animation(res)
 #'@export
 animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=1000){
   if( is.null(obj$info$plot_info$layout)) {
@@ -17,6 +17,7 @@ animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=
   }
   
   elist <- obj$info$network
+  groups <- obj$info$groups
   
   if(segment){
     nmax <- 1 + length(obj$info$segment)
@@ -27,11 +28,11 @@ animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=
     saveHTML({
 #      ani.options(oopt)
       elist$weight <- set_edge_weight(elist,obj$edge_ic)
-      p <- qgraph(elist,layout=obj$info$plot_info$layout,title="Infomation Content of inNode")
+      p <- qgraph(elist,layout=obj$info$plot_info$layout,groups=obj$info$groups,title="Infomation Content of inNode")
       ani.pause()
       for(i in 1:length(obj$info$segment)){
         elist$weight <- set_edge_weight(elist,obj$info$seg_mean[i,])
-        p <- qgraph(elist,layout=obj$info$plot_info$layout,title=paste0("Average control strength at ",rownames(obj$info$seg_mean)[i]))
+        p <- qgraph(elist,layout=obj$info$plot_info$layout,groups=obj$info$groups,title=paste0("Average control strength at ",rownames(obj$info$seg_mean)[i]))
         ani.pause()
       }
     }, )
@@ -45,11 +46,11 @@ animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=
     saveHTML({
       #      ani.options(oopt)
       elist$weight <- set_edge_weight(elist,obj$edge_ic)
-      p <- qgraph(elist,layout=obj$info$plot_info$layout,title="Infomation Content of inNode")
+      p <- qgraph(elist,layout=obj$info$plot_info$layout,groups=obj$info$groups,title="Infomation Content of inNode")
       ani.pause()
       for(i in 1:nrow(obj$score)){
         elist$weight <- set_edge_weight(elist,obj$score[i,])
-        p <- qgraph(elist,layout=obj$info$plot_info$layout,title=paste0("Average control strength at ",rownames(obj$score)[i]))
+        p <- qgraph(elist,layout=obj$info$plot_info$layout,groups=obj$info$groups,title=paste0("Average control strength at ",rownames(obj$score)[i]))
         ani.pause()
       }
     }, )

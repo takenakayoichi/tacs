@@ -24,6 +24,6 @@ Display Animation of Control Strength of each time-point or segment
 \examples{
 data(dream4)
 res <- tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment)
-animation(res,dream4$exp)
+animation(res)
 }
 
