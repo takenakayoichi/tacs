@@ -5,7 +5,7 @@
 \title{Display Animation of Control Strength of each time-point or segment}
 \usage{
 animation(obj, segment = FALSE, filename = "index.html", width = 1000,
-  height = 1000)
+  height = 1000, cutoff = 0)
 }
 \arguments{
 \item{obj}{an object of class tacs}
