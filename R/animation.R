@@ -32,7 +32,7 @@ animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=
                         img.name="tacs_seg",nmax=nmax)
     saveHTML({
 #      ani.options(oopt)
-      elist$weight <- set_edge_weight(elist,obj$edge_ic)
+      elist$weight <- set_edge_weight(elist,obj$ave_InfoGain)
       elist$weight <- cutoff_edge_weight(elist,sd,cutoff)
 #      p <- qgraph(elist,layout=obj$info$plot_info$layout,groups=obj$info$groups,title="Infomation Content of inNode")
       p <- qgraph(elist,layout=layout,groups=groups,color=color,legend=legend,title="Infomation Content of inNode")
@@ -53,7 +53,7 @@ animation <- function(obj,segment=FALSE,filename="index.html",width=1000,height=
     
     saveHTML({
       #      ani.options(oopt)
-      elist$weight <- set_edge_weight(elist,obj$edge_ic)
+      elist$weight <- set_edge_weight(elist,obj$ave_InfoGain)
       elist$weight <- cutoff_edge_weight(elist,sd,cutoff)
       p <- qgraph(elist,layout=layout,groups=groups,color=color,legend=legend,title="Infomation Content of inNode")
       ani.pause()

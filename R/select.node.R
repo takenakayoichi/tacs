@@ -22,7 +22,7 @@ select.nodes <- function(obj,nodes,delete=FALSE){
   
   tacs <- c()
   tacs$score <- obj$score[nodes]
-  tacs$edge_ic <- obj$edge_ic[nodes]
+  tacs$ave_InfoGain <- obj$ave_InfoGain[nodes]
   tacs$info <- c()
   tacs$info$is_markov <- obj$info$is_markov
   tacs$info$segment <- obj$info$segment

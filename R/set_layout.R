@@ -7,7 +7,7 @@ set_layout <- function(obj){
   edgelist <- obj$info$network
   
   #Layout of edge IC
-  edgelist$weight <- set_edge_weight(edgelist,obj$edge_ic)
+  edgelist$weight <- set_edge_weight(edgelist,obj$ave_InfoGain)
   q <- qgraph(edgelist,DoNotPlot=F)
   
   #Layout of score_sd

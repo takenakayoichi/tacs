@@ -25,8 +25,18 @@ NULL
 #'
 #'@return strength Control strength toward each node for every time point: data frame
 #'@examples
-#'data(dream4)
-#'tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,NA)
+#'data(diauxie)#an example in GIW2015 paper
+#'res <- tacs(diauxie$net,diauxie$exp,"aic-g",is_markov=TRUE,segment=diauxie$segment,segment_name=diauxie$segment_name)
+#'gene_selected <- apply(res$score,2,max) + res$ave_InfoGain >0
+#'score <- res$score[1:16,gene_selected] # 1:16: Wild Type.
+#'score[score<0] <- 0  #to show the results in barplot, remove negatives
+#'barplot(t(as.matrix(score)),width=nrow(score),beside=TRUE,
+#'col=topo.colors(ncol(score)),legend.text=names(score))
+#'WT <-  select.segments(res,"WT") #Plot score of each gene
+#'WT_genes <- select.nodes(WT,names(gene_selected[gene_selected]))
+#'plot(WT_genes)
+#'data(dream4) #Anther example
+#'tacs(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,NA) -> res
 #'@export
 tacs <- function(network,exp_data,ic_type="aic-g",is_markov=FALSE,segment=NA,segment_name=NA)
 {

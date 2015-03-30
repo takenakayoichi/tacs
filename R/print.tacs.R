@@ -15,7 +15,7 @@ print.tacs <- function(obj,...){
   
   if(length(obj$info$segment) != 1) { 
     cat("\n[segment summary]\n\n")    
-    df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
+    df <- rbind(ave_InfoGain=obj$ave_InfoGain,sd=obj$info$score_sd,obj$info$seg_mean)
     print(df)
   }
   
@@ -31,7 +31,7 @@ print.tacs <- function(obj,...){
   
 #  if(length(obj$info$segment) != 1) { 
 #    cat("\n[segment summary]\n\n")    
-#    df <- rbind(edge_ic=obj$edge_ic,sd=obj$info$score_sd,obj$info$seg_mean)
+#    df <- rbind(ave_InfoGain=obj$ave_InfoGain,sd=obj$info$score_sd,obj$info$seg_mean)
 #    print(df)
 #  }
 #  cat("\n[time-course of control strength toward nodes] \n\n")

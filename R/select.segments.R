@@ -29,7 +29,7 @@ select.segments <- function(obj,segs,delete=FALSE){
   
   tacs <- c()
   tacs$score <- obj$score[segcols,]
-  tacs$edge_ic <- obj$edge_ic
+  tacs$ave_InfoGain <- obj$ave_InfoGain
   tacs$info <- c()
   tacs$info$is_markov <- obj$info$is_markov
   tacs$info$segment <- obj$info$segment[segpos]

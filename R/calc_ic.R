@@ -26,7 +26,8 @@ calc_ic <- function(exp_data,info){
   #remove nodes without inedge and store 
   col_valid <- as.vector(!is.na(middle$information_gain[1,]))  
   res_ic$score <- middle$gain_diff[,col_valid]
-  res_ic$edge_ic <- gain_ave[1,col_valid]
+  #res_ic$edge_ic <- gain_ave[1,col_valid]
+  res_ic$ave_InfoGain <- gain_ave[1,col_valid]
   score_sd <- apply(res_ic$score,2,sd)  
   res_ic$info$score_sd <- score_sd
 
@@ -40,11 +41,11 @@ calc_ic <- function(exp_data,info){
 #    seg_mean[col_order]
     res_ic$info$seg_mean <- seg_mean
   }
-  #set col order by edge_ic
-  #res_ic$info$col_order <- order(res_ic$edge_ic,decreasing=TRUE)
-  col_order <- order(res_ic$edge_ic,decreasing=TRUE)
+  #set col order by ave_InfoGain
+  #res_ic$info$col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
+  col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
   res_ic$score <- res_ic$score[,col_order]
-  res_ic$edge_ic <- res_ic$edge_ic[col_order]
+  res_ic$ave_InfoGain <- res_ic$ave_InfoGain[col_order]
   res_ic$info$seg_mean <- res_ic$info$seg_mean[,col_order]
   res_ic$info$score_sd <- res_ic$info$score_sd[col_order]
 
