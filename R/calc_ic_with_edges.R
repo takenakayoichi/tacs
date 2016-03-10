@@ -33,7 +33,7 @@ calc_ic_with_edges <-function(network,exp_data,ic_type,is_markov,segment,icwoedg
       next
     }
     #ネット形成
-    nodes <- c(gene_name[i],subnet[[1]])
+    nodes <- unique(c(gene_name[i],subnet[[1]]))
     e = empty.graph(nodes)
     arcs(e) = subnet
     
