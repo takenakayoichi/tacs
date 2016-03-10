@@ -28,8 +28,8 @@ calc_ic <- function(exp_data,info){
   res_ic$score <- middle$gain_diff[,col_valid]
   #res_ic$edge_ic <- gain_ave[1,col_valid]
   res_ic$ave_InfoGain <- gain_ave[1,col_valid]
-  is.null(dim(res_ic$score)){
-    score_sd <- NA
+  if(is.null(dim(res_ic$score))){
+    score_sd <- sd(res_ic$score)
   }else {
     score_sd <- apply(res_ic$score,2,sd)  
   }

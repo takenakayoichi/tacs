@@ -1,12 +1,15 @@
 Package: tacs
 Type: Package
-Title: Time Course Analysis of Control strength toward nodes/gene expression on directed graph based on Information Criterion.
+Title: Time Course Analysis of Control strength toward nodes/gene expression on
+    directed graph based on Information Criterion.
 Version: 0.1
 Date: 2015-01-26
 Author: Yoichi Takenaka
 Maintainer: Yoichi Takenaka <takenaka@ist.osaka-u.ac.jp>
-Description: Time Course Analysis of Control strength toward nodes/gene expression on directed graph based on Information Criterion.
+Description: Time Course Analysis of Control strength toward nodes/gene
+    expression on directed graph based on Information Criterion.
 License: MIT
-Suggest: 
-  testthat
-Imports: bnlearn,testthat,ggplot2,grid,qgraph,animation
+Suggest: testthat
+Imports:
+    bnlearn,testthat,ggplot2,grid,qgraph,animation
+RoxygenNote: 5.0.1
