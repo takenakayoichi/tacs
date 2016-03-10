@@ -48,7 +48,11 @@ calc_ic <- function(exp_data,info){
   #set col order by ave_InfoGain
   #res_ic$info$col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
   col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
-  res_ic$score <- res_ic$score[,col_order]
+  if(is.null(dim(res_ic$score))){
+    res_ic$score <- res_ic$score[col_order]  
+  } else {
+    res_ic$score <- res_ic$score[,col_order]
+  }
   res_ic$ave_InfoGain <- res_ic$ave_InfoGain[col_order]
   res_ic$info$seg_mean <- res_ic$info$seg_mean[,col_order]
   res_ic$info$score_sd <- res_ic$info$score_sd[col_order]
