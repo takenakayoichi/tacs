@@ -30,6 +30,7 @@ calc_ic <- function(exp_data,info){
   res_ic$ave_InfoGain <- gain_ave[1,col_valid]
   if(is.null(dim(res_ic$score))){
     score_sd <- sd(res_ic$score)
+    names(score_sd) <- info$network$to[1]
   }else {
     score_sd <- apply(res_ic$score,2,sd)  
   }
@@ -49,7 +50,8 @@ calc_ic <- function(exp_data,info){
   #res_ic$info$col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
   col_order <- order(res_ic$ave_InfoGain,decreasing=TRUE)
   if(is.null(dim(res_ic$score))){
-    res_ic$score <- res_ic$score[col_order]  
+    res_ic$score <- data.frame(res_ic$score)
+    names(res_ic$score) <- info$network$to[1]
   } else {
     res_ic$score <- res_ic$score[,col_order]
   }
