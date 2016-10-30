@@ -42,7 +42,7 @@ calc_ic_with_edges <-function(network,exp_data,ic_type,is_markov,segment,icwoedg
       in_lower_exp <- as.data.frame(lower_exp[,i])
       colnames(in_lower_exp) <- gene_name[i]
     
-      out_upper_exp <- lower_exp[, is.element(colnames(lower_exp),subnet[[1]])]
+      out_upper_exp <- upper_exp[, is.element(colnames(upper_exp),subnet[[1]])]
       if( class(out_upper_exp) == "numeric") {
         out_upper_exp <- as.data.frame(out_upper_exp)
         colnames(out_upper_exp) <- subnet[[1]][1]
