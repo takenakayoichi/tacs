@@ -13,11 +13,11 @@ test_that("Make_data_frame_to_store_ic",{
   sample_name <- rownames(dream4$exp)
   res <- make_data_frame_to_store_ic(gene_name,sample_name,TRUE,dream4$segment)
   b <- expect_equal(nrow(res),100)
-  if(b$passed)  print("DF with segment size OK.") else print("DF size BAD")
+  #if(b$passed)  print("DF with segment size OK.") else print("DF size BAD")
 
   res <- make_data_frame_to_store_ic(gene_name,sample_name,FALSE,length(sample_name))
   b <- expect_equal(nrow(res),105)
-  if(b$passed)  print("DF w/o segmentsize OK.") else print("DF size BAD")
+  #if(b$passed)  print("DF w/o segmentsize OK.") else print("DF size BAD")
   
   })
 
