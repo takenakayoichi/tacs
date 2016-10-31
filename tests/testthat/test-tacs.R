@@ -13,11 +13,11 @@ test_that("Make_data_frame_to_store_ic",{
   sample_name <- rownames(dream4$exp)
   res <- make_data_frame_to_store_ic(gene_name,sample_name,TRUE,dream4$segment)
   b <- expect_equal(nrow(res),100)
-  if(b$passed)  print("DF with segment size OK.") else print("DF size BAD")
+  #if(b$passed)  print("DF with segment size OK.") else print("DF size BAD")
 
   res <- make_data_frame_to_store_ic(gene_name,sample_name,FALSE,length(sample_name))
   b <- expect_equal(nrow(res),105)
-  if(b$passed)  print("DF w/o segmentsize OK.") else print("DF size BAD")
+  #if(b$passed)  print("DF w/o segmentsize OK.") else print("DF size BAD")
   
   })
 
@@ -91,15 +91,15 @@ test_that("IC withedge",{
   context("with segment")
   icwo <- calc_ic_without_edge(dream4$exp,"aic-g",TRUE,dream4$segment) 
   icw  <- calc_ic_with_edges(dream4$net,dream4$exp,"aic-g",TRUE,dream4$segment,icwo) 
-  b <- expect_equal(round(icw[1,10]*100),6415)
+  b <- expect_equal(round(icw[1,10]*100),7383)
   b <- expect_equal(icw[1,1],NA)
   b <- expect_equal(icw$fis[1],NA)
   b <- expect_equal(icw$rutR[1],NA)
   b <- expect_equal(icw$soxR[1],NA)
-  b <- expect_equal(floor(icw$gadX[1]*100),14894)
-  b <- expect_equal(round(icw$gadX[100]*100),14737)
-  b <- expect_equal(floor(icw$mtlR[1]*100),8761)
-  b <- expect_equal(round(icw$mtlR[30]*100),8513)
+  b <- expect_equal(floor(icw$gadX[1]*100),14541)
+  b <- expect_equal(round(icw$gadX[100]*100),14540)
+  b <- expect_equal(floor(icw$mtlR[1]*100),11378)
+  b <- expect_equal(round(icw$mtlR[30]*100),11361)
   
 })
 
